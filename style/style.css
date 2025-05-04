@@ -141,3 +141,52 @@ footer{
     font-family: Arial, Helvetica, sans-serif;
     font-size: 14px;
 }
+button{
+    border: none;
+    outline: none;
+    background: none;
+}
+.app_footer{
+    display: flex;
+    height: 80px;
+    width: 400px;
+    background: rgb(15, 15, 15);
+    border: 1px solid rgb(34, 34, 34);
+    position: fixed;
+    bottom: 5%;
+    left: calc(50%- 200px);
+    padding: 5px;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    border-radius: 30px;
+}
+
+.app_footer-progress{
+    width: 80%;
+    height: 5px;
+    border-radius: 20px;
+    border: 1px solid rgb(48, 48, 48);
+    overflow: hidden;
+}
+
+#progress{
+    height: 100%;
+    width: 0%;
+    background-color: orange;
+}
+
+.app_footer-controls{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+}
+
+@media screen and (max-width: 500px){
+    .app_footer{
+        width: 90vw;
+        left: calc(50% - 45vw);
+    }
+    
+}

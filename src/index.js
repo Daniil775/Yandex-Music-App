@@ -1,3 +1,5 @@
+let progressEl = document.querySelector("#progress")
+
 let musicList = [
     {
         artist:"Игорь Скляр",
@@ -32,6 +34,7 @@ let controls = {
     prev: document.querySelector('#prev')
 }
 
+let currentTime = 0;
 let isPlaying = false;
 let currentIndex = Math.floor(musicList.length / 2);
 let currentMusic = new Audio(musicList[currentIndex].src)
@@ -61,3 +64,10 @@ function handlePrev(){
 controls.play.addEventListener("click", handleAction)
 controls.next.addEventListener("click", handleNext)
 controls.prev.addEventListener("click", handlePrev)
+
+currentMusic.addEventListener("timeupdate",(e) => {
+    currentTime = e.target.currentTime;
+
+    let precent = (currentTime / currentMusic.duration) * 100;
+    progressEl.style.width = `${precent}%`
+})
