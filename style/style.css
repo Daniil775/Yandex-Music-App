@@ -190,3 +190,84 @@ button{
     }
     
 }
+
+.app-playlist{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgb(255, 228, 178);
+    color: black;
+    gap: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    position: fixed;
+    left: 4%;
+    bottom: 4%;
+    font-weight: bold;
+    font-size: 17px;
+}
+
+#playlist{
+    display: none;
+    flex-direction: column;
+    padding: 20px;
+    background: white;
+    backdrop-filter: blur(100px);
+    z-index: 1001;
+    color: black;
+    width: 600px;
+    height: 400px;
+    position: fixed;
+    left: calc(50% - 300px);
+    top: calc(50% - 200px);
+    border-radius: 30px;
+}
+
+.playlist-table{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    padding: 20px;
+}
+
+.playlist-table-head{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 20px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+
+}
+
+.playlist-card{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+
+    & div{
+        padding: 5px;
+        background: whitesmoke;
+        border-radius: 10px;
+    }
+}
+
+.active{
+    display: flex !important;
+}
+
+@media screen and (max-width: 500px){
+    .app_footer{
+        width: 90vw;
+        left: calc(50% - 45vw);
+    }
+    #playlist{
+        width: 90vw;
+        left: calc(50% - 45vw);
+    }
+    .app-playlist{
+        bottom: 20%;
+        left: 35%;
+    }
+}
