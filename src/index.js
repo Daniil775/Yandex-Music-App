@@ -3,6 +3,9 @@ let timeEl = document.querySelector("#time")
 let playlistEl = document.querySelector("#playlist")
 let playlistBtn = document.querySelector(".app-playlist")
 let playlistTable = document.querySelector(".playlist-table")
+let closeBtn = document.querySelector(".close")
+let muteBtn = document.querySelector("#mute")
+let repeatBtn = document.querySelector("#repeat")
 
 let musicList = [
     {
@@ -49,6 +52,8 @@ let currentIndex = Math.floor(musicList.length / 2);
 let currentMusic = new Audio(musicList[currentIndex].src)
 let mins = 0;
 let secs = 0;
+let isMute = false;
+let isRepeat = false;
 
 function handleAction(){
     if(isPlaying){
@@ -88,6 +93,22 @@ function openPlaylist(){
     }
 }
 
+function handleMute(){
+    currentMusic.muted = !isMute;
+    isMute = !isMute;
+
+    if(isMute == true){
+        muteBtn.querySelector("img").src = "./img/volume-x.png"
+    }else{
+        muteBtn.querySelector("img").src = "./img/volume.png"
+    }
+}
+
+function handleRepeat(){
+    currentMusic.loop = !isRepeat;
+    isRepeat = !isRepeat;
+}
+
 controls.play.addEventListener("click", handleAction)
 controls.next.addEventListener("click", handleNext)
 controls.prev.addEventListener("click", handlePrev)
@@ -98,9 +119,15 @@ currentMusic.addEventListener("timeupdate",(e) => {
     secs = String(Math.floor(currentTime%60)).padStart(2, "0");
     timeEl.innerHTML = `${mins}:${secs}`
 
-    console.log(currentTime)
     let precent = (currentTime / currentMusic.duration) * 100;
     progressEl.style.width = `${precent}%`
 })
 
 playlistBtn.addEventListener("click", openPlaylist)
+
+closeBtn.addEventListener("click",()=>{
+    playlistEl.classList.remove("active");
+});
+
+muteBtn.addEventListener("click", handleMute)
+repeatBtn.addEventListener("click", handleRepeat)
